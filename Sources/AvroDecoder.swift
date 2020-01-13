@@ -115,10 +115,8 @@ open class AvroDecoder {
     open func decodeBytes() -> [UInt8]? {
         if let sizeLong = decodeLong() {
             let size = Int(sizeLong)
-            print("Bytes Count: \(bytes.count)")
-            print("Size: \(size)")
             if bytes.count > 0 {
-                if size <= Int(bytes.count) && size != 0 {
+                if size <= Int(bytes.count) && size > 0 {
                 let tmp = bytes[0..<size]
                 bytes.removeSubrange(0..<size)
                 return [UInt8](tmp)
